@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bluff or Truth</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section id="home-screen" class="screen">
+        <p class="eyebrow">A real-time party game</p>
+        <h1>Bluff or Truth</h1>
+        <p class="intro">Can your friends spot the lie?</p>
+        <label for="name-input">Your name</label>
+        <input id="name-input" maxlength="20" autocomplete="nickname" placeholder="e.g. Sam" />
+        <p id="home-error" class="error" role="alert"></p>
+        <div class="actions">
+          <button id="create-room" class="primary">Create room</button>
+          <div class="join-row">
+            <input id="room-code-input" maxlength="5" autocomplete="off" placeholder="Room code" />
+            <button id="join-room">Join room</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="lobby-screen" class="screen hidden" aria-live="polite">
+        <p class="eyebrow">Room code</p>
+        <div class="room-code" id="room-code-display"></div>
+        <p class="share-note">Share this code so friends can join from their own device.</p>
+        <h2>Players <span id="player-count"></span></h2>
+        <ul id="player-list" class="player-list"></ul>
+        <p id="lobby-message" class="status-message"></p>
+        <button id="start-game" class="primary hidden">Start game</button>
+      </section>
+
+      <section id="presenting-screen" class="screen hidden">
+        <p class="eyebrow">Presenter round</p>
+        <h2 id="presenting-title">Get ready to bluff.</h2>
+        <div id="presenter-form" class="hidden">
+          <p>Enter two statements. Your choice stays private until the reveal.</p>
+          <label for="statement-one">Statement 1</label>
+          <input id="statement-one" maxlength="180" placeholder="I have swum with sharks" />
+          <label for="statement-two">Statement 2</label>
+          <input id="statement-two" maxlength="180" placeholder="I can solve a Rubik’s Cube in under a minute" />
+          <fieldset>
+            <legend>Which statement is the lie?</legend>
+            <label><input type="radio" name="lie" value="0" checked /> Statement 1</label>
+            <label><input type="radio" name="lie" value="1" /> Statement 2</label>
+          </fieldset>
+          <p id="presenter-error" class="error" role="alert"></p>
+          <button id="submit-statements" class="primary">Start voting</button>
+        </div>
+        <p id="presenting-waiting">Waiting for the Presenter to enter their statements…</p>
+      </section>
+
+      <section id="voting-screen" class="screen hidden">
+        <p class="eyebrow">Vote now</p>
+        <h2 id="voting-title">Which one is the lie?</h2>
+        <div id="statement-options" class="statement-options"></div>
+        <p id="vote-status" class="status-message"></p>
+      </section>
+
+      <section id="reveal-screen" class="screen hidden">
+        <p class="eyebrow">The truth is out</p>
+        <h2 id="reveal-title">Reveal</h2>
+        <div id="reveal-statements" class="reveal-statements"></div>
+        <p id="correct-voters" class="status-message"></p>
+        <p class="next-round">Next round starts automatically…</p>
+        <div id="scoreboard"></div>
+      </section>
+
+      <section id="gameover-screen" class="screen hidden">
+        <p class="eyebrow">Game over</p>
+        <h2>Final leaderboard</h2>
+        <div id="final-scoreboard"></div>
+        <button id="play-again" class="primary hidden">Play again</button>
+        <p id="gameover-note" class="status-message"></p>
+      </section>
+    </main>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
