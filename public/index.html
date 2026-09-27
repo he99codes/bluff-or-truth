@@ -78,6 +78,22 @@
         <p id="gameover-note" class="status-message"></p>
       </section>
     </main>
+    <button id="help-btn" aria-label="How to play">?</button>
+    <div id="help-modal" class="hidden" role="dialog" aria-modal="true" aria-labelledby="help-title">
+      <div class="help-card">
+        <button id="help-close" aria-label="Close">×</button>
+        <p class="eyebrow">How to play</p>
+        <h2 id="help-title">Bluff or Truth</h2>
+        <ol class="rules">
+          <li><strong>Get in:</strong> one player creates a room and shares the 5-letter code. Friends join from their own device (2–4 players).</li>
+          <li><strong>Present:</strong> each round one player is the Presenter. They write two statements about themselves and secretly mark which is the lie.</li>
+          <li><strong>Vote:</strong> everyone else picks which statement they think is the lie.</li>
+          <li><strong>Score:</strong> spot the lie → you get 1 point. Fool someone → the Presenter gets 1 point per wrong guess.</li>
+          <li><strong>Rotate:</strong> after the reveal, the next player presents. Once everyone has had a turn, the highest score wins.</li>
+        </ol>
+        <p class="help-tip">Only the host can start a game or restart after game over. You can change your vote until everyone has voted.</p>
+      </div>
+    </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="app.js"></script>
   </body>

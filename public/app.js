@@ -72,6 +72,12 @@ document.querySelector('#play-again').addEventListener('click', () => {
   });
 });
 
+const helpModal = document.querySelector('#help-modal');
+document.querySelector('#help-btn').addEventListener('click', () => helpModal.classList.remove('hidden'));
+document.querySelector('#help-close').addEventListener('click', () => helpModal.classList.add('hidden'));
+helpModal.addEventListener('click', (event) => { if (event.target === helpModal) helpModal.classList.add('hidden'); });
+document.addEventListener('keydown', (event) => { if (event.key === 'Escape') helpModal.classList.add('hidden'); });
+
 function renderRoom() {
   if (!currentRoom) return;
   if (currentRoom.status !== 'lobby') return showScreen(presentingScreen);
